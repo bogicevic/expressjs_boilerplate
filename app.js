@@ -15,12 +15,16 @@ app.get('/dog', function(req, res) {
 
 // introducing route variables
 app.get('/r/:post', function(req, res) {
-    res.send('This page is to show any entered post');
+    var postName = req.params.post;
+    res.send('This page is to show any requested post name: ' + postName);
 });
 
 // multiple route variables
 app.get('/r/:post/comments/:id/:title', function(req, res) {
-    res.send('This page is to show comments on post, with its id and title');
+    var postName = req.params.post;
+    var postID = req.params.id;
+    var postTitle = req.params.title;
+    res.send('This page is to show comments on ' + postName + ', with id ' + postID + ' and titled ' + postTitle);
 });
 
 // catch all route - order matters, keep it at the bottom
